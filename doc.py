@@ -6,9 +6,9 @@ def display_documentation():
 
     st.markdown("## <span class='material-symbols-outlined'>menu_book</span> Documentação Detalhada do Projeto", unsafe_allow_html=True)
     st.caption("Navegue pelas abas abaixo para explorar todos os aspectos do projeto, desde a configuração até o uso e solução de problemas.")
-    st.write("---")
+    st.subheader(" ", divider="rainbow")
 
-    tab_labels = [ # Adicionando emojis diretamente aos nomes das abas para melhor apelo visual
+    tab_labels = [ # Emojis diretamente nos nomes das abas para melhor apelo visual
         "🌟 Visão Geral",
         "🛠️ Tecnologias",
         "🖥️ Config. Ambiente",
@@ -49,7 +49,7 @@ def display_documentation():
             - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>code_off</span> Baixo Custo/Gratuito:** Utiliza ferramentas e modelos open-source, eliminando custos de APIs pagas para transcrição e processamento de linguagem.
             """, unsafe_allow_html=True)
         
-        st.write("---")
+        st.subheader(" ", divider="rainbow")
         st.subheader("🔑 Funcionalidades Detalhadas")
         
         # Funcionalidades em colunas, com cada feature em um container destacado
@@ -63,7 +63,7 @@ def display_documentation():
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>hearing_disabled</span> Utilização do robusto modelo OpenAI Whisper para reconhecimento de fala.
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>translate</span> Priorização para o idioma Português (`language='pt'`) para maior acurácia em conteúdos locais.
                 """, unsafe_allow_html=True)
-            st.markdown("<br>", unsafe_allow_html=True) # Espaçador
+            st.markdown("<br>", unsafe_allow_html=True) 
             with st.container(border=True):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>psychology</span> Extração Inteligente de Pontos-Chave", unsafe_allow_html=True)
                 st.markdown("""
@@ -79,7 +79,7 @@ def display_documentation():
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>model_training</span> Seleção do tamanho do modelo Whisper (`tiny`, `base`, `small`, `medium`, `large`) para balancear velocidade e precisão.
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>settings_ethernet</span> Campo para especificar o nome do modelo Ollama a ser utilizado, conforme configurado localmente pelo usuário.
                 """, unsafe_allow_html=True)
-            st.markdown("<br>", unsafe_allow_html=True) # Espaçador
+            st.markdown("<br>", unsafe_allow_html=True) 
             with st.container(border=True):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>preview</span> Interface Clara e Feedback ao Usuário", unsafe_allow_html=True)
                 st.markdown("""
@@ -89,7 +89,7 @@ def display_documentation():
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>notifications_active</span> Notificações (toasts) para informar sobre a conclusão de etapas.
                 """, unsafe_allow_html=True)
         
-        st.markdown("---")
+        st.subheader(" ", divider="rainbow")
         st.subheader("🏗️ Arquitetura Simplificada do Sistema")
         st.markdown("""
         O funcionamento da aplicação pode ser entendido através de suas principais camadas e o fluxo de dados entre elas:
@@ -107,7 +107,7 @@ def display_documentation():
             st.caption("Emprega **Ollama + LLM**. Recebe o texto transcrito e o processa para extrair os principais insights e pontos.")
         
         st.markdown("<br>", unsafe_allow_html=True)
-        # O título do fluxograma já está centralizado pelo HTML
+        # O título do fluxograma centralizado pelo HTML
         st.markdown("<p style='text-align:center; font-weight:bold;'><span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.2em;'>flowsheet</span> Fluxo de Dados da Aplicação:</p>", unsafe_allow_html=True)
         
         # Usando colunas para centralizar o gráfico Graphviz e sua legenda
@@ -138,7 +138,7 @@ def display_documentation():
                     ollama_llm -> streamlit_app [label="  Pontos-Chave  "];
                 }
             """)
-            # A legenda agora também fica centralizada dentro da coluna do gráfico
+            
             st.caption("Diagrama do fluxo de dados principal da aplicação, da entrada do usuário até a exibição dos resultados.")
             
              
@@ -149,7 +149,7 @@ def display_documentation():
         Este projeto é o resultado da sinergia entre diversas ferramentas e bibliotecas de ponta,
         cada uma desempenhando um papel crucial na funcionalidade e experiência do usuário.
         """)
-        st.write("---")
+        st.subheader(" ", divider="rainbow")
 
         col_tech1, col_tech2 = st.columns(2)
         with col_tech1:
@@ -202,7 +202,7 @@ def display_documentation():
                 biblioteca de modelos abertos. [Conheça o Ollama](https://ollama.com).
                 """)
         
-        st.write("---")
+        st.subheader(" ", divider="rainbow")
         st.warning(
             """**Dependência Externa Essencial: FFmpeg**
             
@@ -218,7 +218,7 @@ def display_documentation():
     with tab_env_setup:
         st.subheader("🖥️ Configuração do Ambiente de Desenvolvimento/Execução")
         st.markdown("Siga estes passos detalhados para preparar seu ambiente local e executar a aplicação. Uma configuração correta é essencial para que todas as funcionalidades operem como esperado.")
-        st.write("---")
+        st.subheader(" ", divider="rainbow")
 
         # Primeiros 4 passos em duas colunas
         col_env1, col_env2 = st.columns(2)
@@ -299,11 +299,11 @@ requests
                 Isso instalará as seguintes bibliotecas e suas respectivas dependências:
                 - **<span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>rocket_launch</span> Streamlit:** Framework utilizado para construir e servir a interface web interativa da aplicação.
                 - **<span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>mic</span> OpenAI Whisper:** Biblioteca da OpenAI para realizar a transcrição de áudio para texto de alta precisão.
-                - **<span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>http</span> Requests:** Biblioteca para realizar chamadas HTTP, usada aqui para comunicar com a API local do servidor Ollama.
+                - **<span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>http</span> Requests:** Biblioteca para realizar chamadas HTTP, usada  para comunicar com a API local do servidor Ollama.
                 """, unsafe_allow_html=True)
                 st.caption("Nota: A dependência `ffmpeg`, que é crucial para o Whisper, é uma instalação a nível de sistema e é tratada no próximo passo.")
         
-        st.write("---") # Separador antes do passo 5
+        st.subheader(" ", divider="rainbow")
 
         with st.expander("Passo 5: Instalação do FFmpeg (Dependência Crítica para Whisper)", expanded=False):
             st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>movie_filter</span> 5. FFmpeg", unsafe_allow_html=True)
@@ -341,7 +341,7 @@ requests
                 4.  <span class='material-symbols-outlined' style='font-size:0.9em; vertical-align:middle;'>restart_alt</span> **Reinicie** terminais abertos ou o sistema.
                 """, unsafe_allow_html=True)
             
-            st.markdown("---")
+            st.subheader(" ", divider="rainbow")
             st.markdown("""
             **<span class='material-symbols-outlined' style='vertical-align:middle;'>task_alt</span> Verificando a Instalação do FFmpeg:**
             Para confirmar, abra um **novo** terminal e digite:
@@ -358,7 +358,7 @@ requests
         Esta seção detalha como configurar os modelos de IA necessários para as funcionalidades de transcrição (Whisper)
         e extração de pontos-chave (Ollama com LLMs). Uma configuração correta é crucial para o funcionamento do aplicativo.
         """)
-        st.write("---")
+        st.subheader(" ", divider="rainbow")
 
         col_whisper, col_ollama = st.columns(2)
 
@@ -432,7 +432,7 @@ requests
                   ```
                 """, unsafe_allow_html=True)
         
-        st.write("---") 
+        st.subheader(" ", divider="rainbow") 
         st.warning(
             """
             **Crítico: Ollama e Modelos LLM**
@@ -442,8 +442,6 @@ requests
             """, 
             icon="🚨"
         )
-    # --- Aba: Executando a Aplicação ---
-# No arquivo doc.py, substitua o conteúdo dentro de 'with tab_running_app:' por isto:
 
     # --- Aba: Executando a Aplicação ---
     with tab_running_app: #
@@ -451,7 +449,7 @@ requests
         st.markdown("""
         Com todos os pré-requisitos e configurações do ambiente e dos modelos de IA concluídos (detalhados nas abas anteriores), você está pronto para iniciar o aplicativo.
         """) 
-        st.write("---")
+        st.subheader(" ", divider="rainbow")
 
         col_checklist, col_steps = st.columns([0.8, 1.2]) # Ajuste a proporção se desejar
 
@@ -467,7 +465,7 @@ requests
             - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>folder_zip</span> Você está no **diretório correto** do projeto no terminal?
             - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>movie_filter</span> `ffmpeg` **instalado** e no PATH (ver aba "Config. Ambiente")?
             """, unsafe_allow_html=True)
-            st.markdown("---")
+            st.subheader(" ", divider="rainbow")
             st.markdown("##### <span class='material-symbols-outlined'>system_update_alt</span> Download de Modelos Whisper", unsafe_allow_html=True)
             st.caption("Lembre-se: os modelos Whisper são baixados automaticamente no primeiro uso. Uma conexão com a internet será necessária nesse momento.")
             
@@ -505,7 +503,7 @@ requests
                 Este comando inicia o servidor web do Streamlit e, na maioria das vezes, abre a aplicação automaticamente no seu navegador padrão.
             """, unsafe_allow_html=True)
         
-        st.write("---") # Separador antes da próxima seção de largura total
+        st.subheader(" ", divider="rainbow")
 
         st.success("🎉 **Aplicação Iniciada! O que esperar:** 🎉", icon="✅") 
         st.markdown("""
@@ -515,7 +513,7 @@ requests
             - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>wifi</span> Network URL:** Algo como `http://SEU_ENDERECO_IP_LOCAL:8501` (útil para acessar de outros dispositivos na mesma rede).
         - <span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>hourglass_empty</span> **Primeiro Carregamento:** Aguarde alguns instantes para a interface carregar completamente. O primeiro uso de um modelo Whisper ou o carregamento inicial de um modelo Ollama podem levar um pouco mais de tempo.
         """, unsafe_allow_html=True) 
-        st.markdown("---")
+        st.subheader(" ", divider="rainbow")
 
         st.markdown("#### <span class='material-symbols-outlined'>stop_circle</span> Parando a Aplicação", unsafe_allow_html=True)
         st.markdown("""
@@ -524,7 +522,7 @@ requests
         - Pressione as teclas `Ctrl` + `C`.
         - O terminal pode pedir uma confirmação para encerrar o job; se sim, confirme (geralmente digitando `y` ou `s`).
         """)
-        st.markdown("---")
+        st.subheader(" ", divider="rainbow")
 
         st.markdown("#### <span class='material-symbols-outlined'>tips_and_updates</span> Dicas Adicionais ao Executar", unsafe_allow_html=True)
         st.markdown("""
@@ -536,7 +534,7 @@ requests
     # --- Aba: Guia de Uso ---
     with tab_usage_guide:
         st.subheader("🧭 Guia de Uso da Interface do Aplicativo") 
-        st.markdown("A interface foi projetada para ser intuitiva. Aqui está um detalhamento das principais seções e funcionalidades:") 
+        st.markdown("A interface foi projetada para ser intuitiva.  está um detalhamento das principais seções e funcionalidades:") 
 
         col_usage1, col_usage2 = st.columns(2)
 
@@ -572,15 +570,15 @@ requests
                     - **Coluna de Pontos-Chave:** À direita, os pontos-chave identificados.
                 - **<span class='material-symbols-outlined'>notifications</span> Notificações (Toasts):**
                     - Mensagens curtas e temporárias para indicar a conclusão de etapas.
-                """, unsafe_allow_html=True) # Adicionado unsafe_allow_html=True aqui
+                """, unsafe_allow_html=True)  
         
         # Seção "Acesso à Documentação" abaixo das colunas, ocupando a largura total
-        st.markdown("---") # Adiciona um separador visual
+        st.subheader(" ", divider="rainbow") 
         st.markdown("#### <span class='material-symbols-outlined'>menu_book</span> 3. Acesso à Documentação", unsafe_allow_html=True) 
         st.markdown("""
         - No topo da página principal ou da página de documentação, você encontrará o botão **"<span class='material-symbols-outlined'>visibility</span> Ver Documentação Interativa"** (ou similar, o texto do botão é definido em `app.py`).
         - Clicar neste botão alterna a visualização entre a interface principal do aplicativo e esta página de documentação detalhada.
-        """, unsafe_allow_html=True) # Adicionado unsafe_allow_html=True aqui
+        """, unsafe_allow_html=True)  
         
         
     # --- Aba: FAQ/Solução de Problemas ---
@@ -641,5 +639,3 @@ requests
 
         st.info("ℹ️ **Dica Geral:** Sempre verifique os logs (mensagens de texto) no terminal onde você executou `streamlit run app.py` e, se aplicável, no terminal onde `ollama serve` está rodando. Eles frequentemente contêm mensagens de erro detalhadas que podem ajudar a diagnosticar o problema.", icon="🔍") #
 
-    # --- Fim das Abas ---
-    # st.sidebar.info("Navegue pela documentação usando as abas acima.", icon="📑")

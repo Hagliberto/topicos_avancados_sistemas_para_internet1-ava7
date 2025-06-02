@@ -54,7 +54,9 @@ smmap==5.0.2                   # Gerenciamento de memória em repositórios Git
 # ===================================================================
 # Bibliotecas de Tokenização e Linguagem Natural
 # ===================================================================
-openai-whisper==20240930       # Transcrição de áudio
+# openai-whisper==20240930       # Transcrição de áudio
+# openai-whisper==20240308       # Transcrição de áudio
+git+https://github.com/openai/whisper.git@main#egg=openai_whisper       # Transcrição de áudio
 tiktoken==0.9.0                # Tokenização para modelos de linguagem
 
 # ===================================================================

@@ -1,141 +1,162 @@
-# Transcrição de Áudio com Whisper e Extração de Pontos-Chave com Ollama
+# 🎙️ Transcrição de Áudio com Whisper e Extração de Pontos-Chave com Ollama 🧠
 
-Este projeto implementa um pipeline que:
-1. Recebe um arquivo de áudio.
-2. Realiza a transcrição do áudio utilizando o modelo Whisper da OpenAI.
-3. Utiliza uma instância local do Ollama para gerar um resumo destacando os pontos-chave do texto transcrito.
+---
 
-A interface do usuário é construída com Streamlit, facilitando o upload do áudio e a visualização dos resultados.
+## 📖 Visão Geral Detalhada do Projeto
 
-## Funcionalidades Principais
+Bem-vindo! Este projeto é uma solução robusta e intuitiva, nascida na disciplina de **Tópicos Avançados em Sistemas para Internet I** do curso de **Tecnologia em Sistemas para Internet**. Nossa missão? Transformar áudio bruto em texto preciso e, em seguida, extrair os **pontos-chave** mais importantes de forma automatizada. 🎯
 
-* Upload de arquivos de áudio nos formatos `.wav` ou `.mp3`.
-* Transcrição de áudio para texto utilizando diferentes tamanhos do modelo Whisper (selecionável pelo usuário).
-* Extração de pontos-chave do texto transcrito através de um modelo de linguagem grande (LLM) configurado no Ollama (selecionável pelo usuário).
-* Interface web amigável e intuitiva.
+Queremos oferecer uma ferramenta **open-source** que demonstre o poder da **Inteligência Artificial (IA)** no processamento de linguagem natural e áudio. Tudo isso através de uma interface web interativa (criada com Streamlit ✨) que roda **localmente** na sua máquina, garantindo **privacidade total** e controle sobre seus dados. 🔒
 
-## Pré-requisitos Essenciais
+### 🎯 Propósito e Objetivos
 
-Antes de começar, garanta que você tem os seguintes softwares instalados e configurados no seu sistema:
+Vivemos em um mundo com muito conteúdo falado! O objetivo central é fornecer uma forma **acessível e poderosa** de analisar esse conteúdo. Automatizamos a transcrição e a sumarização para otimizar seu tempo e facilitar o acesso à informação presa em gravações. Não é só converter fala em texto, é **agregar valor** extraindo a essência do conteúdo. A escolha por modelos locais (Whisper + Ollama) reforça nosso compromisso com a sua privacidade.
 
-1.  **Python:** Versão 3.8 ou superior. Você pode baixar o Python em [python.org](https://www.python.org/).
-    * Durante a instalação do Python no Windows, marque a opção "Add Python to PATH".
-2.  **Ollama:** É necessário ter o Ollama instalado e em execução.
-    * **Instalação do Ollama:** Siga as instruções em [ollama.com](https://ollama.com/). O Ollama permite rodar modelos de linguagem grandes localmente.
-    * **Download de um Modelo LLM para o Ollama:** Você precisará de um modelo para que o Ollama realize a extração dos pontos-chave. `llama3` é uma boa opção. Abra seu terminal (Prompt de Comando, PowerShell, ou Terminal do Linux/macOS) e execute:
-        ```bash
-        ollama pull llama3
-        ```
-        Você pode substituir `llama3` por outro modelo de sua preferência (ex: `mistral`, `phi3`), mas lembre-se de ajustar o nome do modelo na interface da aplicação se usar um diferente do padrão (`llama3`).
-    * **Verifique se o Ollama está rodando:** Após a instalação, o Ollama geralmente roda como um serviço em segundo plano. Você pode testar se ele está respondendo abrindo `http://localhost:11434` no seu navegador (deve aparecer "Ollama is running") ou rodando `ollama list` no terminal.
-3.  **ffmpeg (para Whisper):** O Whisper utiliza o `ffmpeg` para processar diversos formatos de áudio.
-    * **Verificação:** Abra um novo terminal e digite `ffmpeg -version`. Se informações da versão aparecerem, ele está instalado e no PATH.
-    * **Instalação (Windows):**
-        1.  Baixe o `ffmpeg` em [gyan.dev](https://www.gyan.dev/ffmpeg/builds/) (pegue uma "release build").
-        2.  Extraia o arquivo para uma pasta, por exemplo, `C:\ffmpeg`.
-        3.  Adicione o caminho da subpasta `bin` (ex: `C:\ffmpeg\bin`) à variável de ambiente `PATH` do seu sistema.
-        4.  Reinicie o terminal/IDE para que a alteração no `PATH` tenha efeito.
-    * **Instalação (Linux - ex: Ubuntu/Debian):**
-        ```bash
-        sudo apt update && sudo apt install ffmpeg
-        ```
-    * **Instalação (macOS com Homebrew):**
-        ```bash
-        brew install ffmpeg
-        ```
+### 👥 Público-Alvo Principal
 
-## Configuração e Instalação do Projeto
+Esta ferramenta foi pensada para você, seja qual for sua área:
 
-Siga os passos abaixo para configurar o ambiente e instalar as dependências do projeto:
+*   **🎓 Estudantes e Pesquisadores:** Transcreva aulas, palestras, entrevistas. Facilita a revisão, busca e análise de dados de áudio.
+*   **💼 Profissionais:** Registre e resuma reuniões, workshops, depoimentos. Otimize seu tempo e retenha informações cruciais.
+*   **📢 Criadores de Conteúdo e Jornalistas:** Gere legendas, transcreva entrevistas, crie resumos de podcasts/vídeos. Agilize seu fluxo de trabalho.
+*   **💻 Desenvolvedores e Entusiastas de IA:** Use como exemplo prático para explorar Whisper e LLMs (via Ollama) em seus próprios projetos.
 
-1.  **Clone o Repositório (Opcional):**
-    Se você recebeu o projeto como um arquivo ZIP, extraia-o. Se for de um repositório Git:
+### ✨ Principais Benefícios
+
+Usar esta ferramenta traz muitas vantagens:
+
+*   **⏱️ Economia de Tempo:** Chega de transcrição manual demorada! Libere tempo para o que realmente importa.
+*   **♿ Acessibilidade:** Torne o conteúdo de áudio acessível a todos, incluindo pessoas com deficiência auditiva, e facilite a pesquisa textual.
+*   **📊 Eficiência na Análise:** Identifique rapidamente informações cruciais e temas centrais com a extração de pontos-chave.
+*   **🔒 Privacidade e Controle:** Seus dados ficam na sua máquina. Sem envios para nuvens externas.
+*   **⚙️ Customização:** Escolha o tamanho do modelo Whisper e o LLM no Ollama que melhor se adaptam às suas necessidades e hardware.
+*   **💰 Baixo Custo/Gratuito:** Totalmente baseado em ferramentas open-source. Sem custos de API.
+
+---
+
+## ✅ Funcionalidades Detalhadas
+
+Combinamos várias capacidades para uma experiência completa:
+
+*   **🎙️ Transcrição Precisa:** Faça upload fácil de arquivos `.wav` e `.mp3`. Usamos o poderoso **OpenAI Whisper** para alta acurácia, otimizado para Português (`pt`).
+*   **🧠 Extração Inteligente de Pontos-Chave:** O texto transcrito é analisado por um **LLM via Ollama** para identificar e apresentar os tópicos principais de forma concisa. Você escolhe o modelo Ollama local (`llama3`, `mistral`, etc.).
+*   **🔧 Configuração Flexível:** Selecione o tamanho do modelo **Whisper** (`tiny` a `large`) para balancear velocidade e precisão. Especifique qual **modelo Ollama** usar.
+*   **👀 Interface Clara e Feedback:** Interaja através de uma interface **Streamlit** amigável. Veja indicadores de progresso (spinners ⏳), ouça o áudio carregado (▶️) e receba notificações ( Tostas 🍞) ao concluir.
+
+---
+
+## 🏗️ Arquitetura Simplificada
+
+Entenda como tudo funciona:
+
+1.  **🖥️ Frontend (Interface Streamlit):** Coleta o áudio e configurações, exibe os resultados.
+2.  **🔊 Motor de Transcrição (Whisper Local):** Converte fala em texto na sua máquina.
+3.  **📝 Motor de Pontos-Chave (Ollama + LLM Local):** Processa o texto para extrair insights.
+
+**Fluxo:** Usuário ➡️ Interface ➡️ Whisper ➡️ Interface ➡️ Ollama ➡️ Interface ➡️ Usuário
+
+---
+
+## 🛠️ Stack Tecnológico Utilizado
+
+Construído com ferramentas open-source incríveis:
+
+*   **🐍 Python:** A linguagem que une tudo.
+*   **🖼️ Streamlit:** Para a interface web interativa.
+*   **🎤 OpenAI Whisper:** Para transcrição de áudio state-of-the-art (local).
+*   **🧠 Ollama:** Para rodar LLMs localmente com facilidade.
+*   **🌐 Requests:** Para comunicação entre Streamlit e Ollama.
+*   **FFmpeg:** Essencial para processamento de áudio pelo Whisper.
+
+---
+
+## 🧱 Pré-requisitos Essenciais
+
+Antes de começar, garanta que você tem:
+
+1.  **Python (>= 3.8):** Baixe em [python.org](https://www.python.org/). (Marque "Add Python to PATH" no Windows).
+2.  **Ollama:** Instalado e rodando. Siga as instruções em [ollama.com](https://ollama.com/).
+    *   **Baixe um Modelo LLM:** Ex: `ollama pull llama3` (ou `mistral`, `phi3`, etc.).
+    *   **Verifique:** Acesse `http://localhost:11434` ou rode `ollama list`.
+3.  **FFmpeg:** Necessário para o Whisper.
+    *   **Verifique:** `ffmpeg -version` no terminal.
+    *   **Instale:**
+        *   **Windows:** Baixe em [gyan.dev](https://www.gyan.dev/ffmpeg/builds/), extraia e adicione a pasta `bin` ao `PATH` do sistema.
+        *   **Linux (Debian/Ubuntu):** `sudo apt update && sudo apt install ffmpeg`
+        *   **macOS (Homebrew):** `brew install ffmpeg`
+
+---
+
+## 🚀 Configuração e Instalação
+
+Vamos preparar o ambiente:
+
+1.  **Obtenha o Código:** Clone o repositório Git ou extraia o arquivo ZIP.
     ```bash
-    git clone <link-do-seu-repositório>
-    cd <nome-da-pasta-do-repositório>
+    # Exemplo com Git
+    git clone <URL_DO_REPOSITÓRIO>
+    cd <NOME_DA_PASTA>
     ```
-
-2.  **Crie e Ative um Ambiente Virtual (Altamente Recomendado):**
-    Ambientes virtuais isolam as dependências do projeto, evitando conflitos com outros projetos Python.
-    * No terminal, navegue até a pasta raiz do projeto e execute:
-        ```bash
-        python -m venv venv
-        ```
-    * Ative o ambiente virtual:
-        * **Windows (Prompt de Comando/PowerShell):**
-            ```bash
-            .\venv\Scripts\activate
-            ```
-        * **Linux/macOS (bash/zsh):**
-            ```bash
-            source venv/bin/activate
-            ```
-        Após a ativação, você verá `(venv)` no início do prompt do seu terminal.
-
-3.  **Instale as Dependências Python:**
-    Com o ambiente virtual ativado, instale as bibliotecas listadas no arquivo `requirements.txt`:
+2.  **Crie e Ative um Ambiente Virtual:** (Altamente recomendado!)
+    ```bash
+    python -m venv venv
+    # Windows
+    .\venv\Scripts\activate
+    # Linux/macOS
+    source venv/bin/activate
+    ```
+    *(Você verá `(venv)` no seu terminal)*
+3.  **Instale as Dependências:**
     ```bash
     pip install -r requirements.txt
     ```
-    O arquivo `requirements.txt` deve conter[cite: 1]:
+
+---
+
+## ▶️ Como Executar a Aplicação
+
+Com tudo pronto:
+
+1.  **Verifique o Ollama:** Garanta que o serviço está rodando e o modelo LLM desejado foi baixado (`ollama list`).
+2.  **Execute o Script Streamlit:** (Com o ambiente `venv` ativado)
+    ```bash
+    streamlit run app.py
     ```
-    streamlit
-    openai-whisper
-    requests
-    ```
+3.  **Acesse a Interface:** O Streamlit deve abrir a aplicação no seu navegador. Se não, acesse o endereço fornecido no terminal (geralmente `http://localhost:8501`).
 
-## Como Executar a Aplicação
+---
 
-Com tudo configurado e as dependências instaladas, siga os passos:
+## 🖱️ Utilizando a Aplicação
 
-1.  **Garanta que o Ollama está em Execução:**
-    * Verifique se o serviço Ollama foi iniciado.
-    * Confirme que o modelo que você pretende usar (ex: `llama3`) foi baixado (`ollama list`).
+É super simples:
 
-2.  **Execute o Script Streamlit:**
-    * Certifique-se de que seu ambiente virtual `(venv)` está ativado.
-    * Navegue pelo terminal até a pasta raiz do projeto (onde o arquivo `app.py` está localizado).
-    * Execute o comando:
-        ```bash
-        streamlit run app.py
-        ```
+1.  **Configure (Barra Lateral):**
+    *   Escolha o **Modelo Whisper** (tamanho).
+    *   Digite o **Nome do Modelo Ollama** que você baixou.
+2.  **Faça Upload do Áudio:** Clique em "Browse files" ou arraste e solte um arquivo `.wav` ou `.mp3`.
+3.  **Processe:** Clique no botão "Processar Áudio".
+4.  **Aguarde e Veja os Resultados:** Acompanhe o progresso. A transcrição e os pontos-chave aparecerão na tela!
 
-3.  **Acesse a Aplicação:**
-    * Após executar o comando acima, o Streamlit geralmente abrirá a aplicação automaticamente no seu navegador web padrão.
-    * Se não abrir, o terminal mostrará um endereço local (URL), tipicamente `http://localhost:8501`. Copie e cole este endereço no seu navegador.
+---
 
-## Utilizando a Aplicação
+## 👨‍💻 Visão Geral do Código (`app.py`)
 
-1.  **Configurações (Barra Lateral):**
-    * **Selecione o Modelo Whisper:** Escolha o tamanho do modelo Whisper. Modelos menores (`tiny`, `base`) são mais rápidos, mas menos precisos. Modelos maiores (`small`, `medium`, `large`) são mais precisos, mas exigem mais processamento e tempo. O padrão é `base`.
-    * **Nome do Modelo Ollama:** Insira o nome do modelo Ollama que você baixou e deseja usar para a extração de pontos-chave. O padrão é `llama3`.
+O coração da aplicação:
 
-2.  **Upload do Áudio:**
-    * Clique em "Browse files" ou arraste e solte um arquivo de áudio (`.wav` ou `.mp3`) na área indicada.
+*   **Importações:** `streamlit`, `whisper`, `requests`, `tempfile`, etc.
+*   **Configurações:** Constantes (URL Ollama, modelos padrão).
+*   **Funções Auxiliares:** `load_whisper_model`, `transcribe_audio`, `get_key_points_from_ollama` (com cache `@st.cache_resource` para otimizar!).
+*   **Interface (Streamlit):** Define o layout, widgets e áreas de exibição.
+*   **Fluxo Principal:** Gerencia o upload, processamento e exibição dos resultados.
 
-3.  **Processamento:**
-    * Clique no botão "Processar Áudio".
-    * Aguarde o processo de transcrição e extração de pontos-chave. O tempo pode variar dependendo do tamanho do áudio e dos modelos selecionados.
+---
 
-4.  **Resultados:**
-    * A transcrição completa do áudio será exibida.
-    * Os pontos-chave extraídos pelo Ollama serão mostrados logo abaixo ou ao lado.
+## 🚧 Melhorias Futuras (Ideias)
 
-## Visão Geral do Código (`app.py`)
+*   Adicionar suporte a processamento de **imagens** (descrições).
+*   Implementar **Text-to-Speech** para ouvir os resultados.
 
-* **Importações:** Bibliotecas necessárias como `streamlit`, `whisper`, `requests`, etc.
-* **Configuração:** Constantes para a URL da API do Ollama e modelos padrão.
-* **Funções Auxiliares:**
-    * `load_whisper_model()`: Carrega o modelo Whisper selecionado e o armazena em cache para melhor desempenho.
-    * `transcribe_audio()`: Responsável pela transcrição do arquivo de áudio.
-    * `get_key_points_from_ollama()`: Envia o texto transcrito para a API do Ollama e obtém os pontos-chave.
-* **Interface do Usuário (Streamlit):** Define o layout da página, os seletores de modelo, o uploader de arquivos e as áreas de exibição dos resultados.
-* **Fluxo Principal:** Gerencia o upload do arquivo, o acionamento do processamento e a orquestração das chamadas às funções auxiliares.
-* O script utiliza `tempfile` para manipular o arquivo de áudio enviado de forma segura e temporária.
+---
 
-## Melhorias Futuras (Não Implementadas)
+*Se encontrar problemas, revise os **Pré-requisitos Essenciais** e garanta que tudo está instalado e rodando corretamente! Bom uso!* 👍
 
-* Opção para receber arquivos de imagem e gerar descrições.
-* Funcionalidade para retornar o conteúdo transcrito ou resumido em formato de áudio (Text-to-Speech).
-
-Se encontrar problemas, verifique se todos os pré-requisitos foram atendidos e se os serviços (como o Ollama) estão realmente em execução.

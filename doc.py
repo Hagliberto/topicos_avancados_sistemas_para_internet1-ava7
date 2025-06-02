@@ -288,9 +288,9 @@ def display_documentation():
                 
                 1.  **<span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>description</span> Crie o arquivo `requirements.txt`** na raiz do seu projeto com o seguinte conteúdo:
                     ```text
-streamlit
-openai-whisper
-requests
+                    - streamlit
+                    - openai-whisper
+                    - requests
                     ```
                 2.  **<span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>download</span> Instale as dependências:** Com o ambiente virtual (se você criou um) **ativado**, execute o seguinte comando no terminal:
                     ```bash

@@ -25,10 +25,10 @@ def display_documentation():
         col_ov1, col_ov2 = st.columns(2)
 
         with col_ov1:
-            st.success("### **Propósito e Objetivos**", icon="🎯")            
+            st.success("### **Propósito e Objetivos**", icon="🎯")
             st.markdown("""
             Este projeto foi concebido como resposta à atividade da disciplina :blue[**Tópicos Avançados em Sistemas para Internet I**] do curso :blue[**Tecnologia em Sistemas para Internet**]. Fundamentalmente, é uma ferramenta robusta e intuitiva para **transformar conteúdo de áudio em texto transcrito e, subsequentemente, em insights concisos através da extração de pontos-chave**.
-            
+
             O objetivo principal é oferecer uma solução de código aberto que demonstre a integração eficaz de tecnologias de ponta em Inteligência Artificial (IA) para processamento de linguagem natural e áudio. A aplicação é acessível por meio de uma interface web interativa, priorizando a facilidade de uso e a execução local dos modelos para maior privacidade e controle do usuário.
 
             **Público-Alvo Principal:**
@@ -48,13 +48,13 @@ def display_documentation():
             - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>tune</span> Customização e Flexibilidade:** Oferece opções para selecionar diferentes modelos (tamanhos do Whisper, escolha do LLM no Ollama) de acordo com a necessidade específica de precisão, velocidade e recursos disponíveis.
             - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>code_off</span> Baixo Custo/Gratuito:** Utiliza ferramentas e modelos open-source, eliminando custos de APIs pagas para transcrição e processamento de linguagem.
             """, unsafe_allow_html=True)
-        
+
         st.subheader(" ", divider="rainbow")
         st.subheader("🔑 Funcionalidades Detalhadas")
-        
+
         # Funcionalidades em colunas, com cada feature em um container destacado
         cols_features_1, cols_features_2 = st.columns(2)
-        
+
         with cols_features_1:
             with st.container(border=True):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>record_voice_over</span> Transcrição de Áudio Precisa", unsafe_allow_html=True)
@@ -63,7 +63,7 @@ def display_documentation():
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>hearing_disabled</span> Utilização do robusto modelo OpenAI Whisper para reconhecimento de fala.
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>translate</span> Priorização para o idioma Português (`language='pt'`) para maior acurácia em conteúdos locais.
                 """, unsafe_allow_html=True)
-            st.markdown("<br>", unsafe_allow_html=True) 
+            st.markdown("<br>", unsafe_allow_html=True)
             with st.container(border=True):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>psychology</span> Extração Inteligente de Pontos-Chave", unsafe_allow_html=True)
                 st.markdown("""
@@ -79,7 +79,7 @@ def display_documentation():
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>model_training</span> Seleção do tamanho do modelo Whisper (`tiny`, `base`, `small`, `medium`, `large`) para balancear velocidade e precisão.
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>settings_ethernet</span> Campo para especificar o nome do modelo Ollama a ser utilizado, conforme configurado localmente pelo usuário.
                 """, unsafe_allow_html=True)
-            st.markdown("<br>", unsafe_allow_html=True) 
+            st.markdown("<br>", unsafe_allow_html=True)
             with st.container(border=True):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>preview</span> Interface Clara e Feedback ao Usuário", unsafe_allow_html=True)
                 st.markdown("""
@@ -88,7 +88,7 @@ def display_documentation():
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>play_circle</span> Player de áudio integrado para verificação do arquivo carregado.
                 - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>notifications_active</span> Notificações (toasts) para informar sobre a conclusão de etapas.
                 """, unsafe_allow_html=True)
-        
+
         st.subheader(" ", divider="rainbow")
         st.subheader("🏗️ Arquitetura Simplificada do Sistema")
         st.markdown("""
@@ -105,32 +105,25 @@ def display_documentation():
         with arch_col3:
             st.markdown("<div align='center'><strong><span class='material-symbols-outlined' style='font-size:1.5em; vertical-align:middle;'>summarize</span><br>3. Pontos-Chave<br>(Processamento Local)</strong></div>", unsafe_allow_html=True)
             st.caption("Emprega **Ollama + LLM**. Recebe o texto transcrito e o processa para extrair os principais insights e pontos.")
-        
+
         st.markdown("<br>", unsafe_allow_html=True)
-        # O título do fluxograma centralizado pelo HTML
         st.markdown("<p style='text-align:center; font-weight:bold;'><span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.2em;'>flowsheet</span> Fluxo de Dados da Aplicação:</p>", unsafe_allow_html=True)
-        
-        # Usando colunas para centralizar o gráfico Graphviz e sua legenda
-        # Ajuste as proporções [0.5, 3, 0.5] conforme necessário.
-        # Isso significa que a coluna do meio (col_chart) ocupará 3 partes da largura,
-        # enquanto as colunas laterais (espaçadores) ocuparão 0.5 parte cada.
+
         col_spacer1, col_chart, col_spacer2 = st.columns([0.5, 3, 0.5])
 
         with col_chart:
             st.graphviz_chart("""
                 digraph {
-                    rankdir="LR"; // Da esquerda para a direita
+                    rankdir="LR"; 
 
                     node [shape=box, style="rounded,filled", fillcolor="#E6F2FF", fontname="Arial", fontsize="10"];
                     edge [fontname="Arial", fontsize="9"];
 
-                    // Nós representando os componentes
                     usuario [label="👤 Usuário", shape=circle, fillcolor="#FFEBE6"];
                     streamlit_app [label="🖥️ Interface Streamlit", fillcolor="#D1FFD1"];
                     whisper_engine [label="🎙️ Motor Whisper (Local)", fillcolor="#FFF0E6"];
                     ollama_llm [label="🧠 Ollama + LLM (Local)", fillcolor="#E6E6FF"];
 
-                    // Arestas representando o fluxo de dados e interações
                     usuario -> streamlit_app [label=" Upload de Áudio\\n+ Configurações"];
                     streamlit_app -> whisper_engine [label="  Arquivo de Áudio  "];
                     whisper_engine -> streamlit_app [label="  Texto Transcrito  "];
@@ -138,10 +131,9 @@ def display_documentation():
                     ollama_llm -> streamlit_app [label="  Pontos-Chave  "];
                 }
             """)
-            
             st.caption("Diagrama do fluxo de dados principal da aplicação, da entrada do usuário até a exibição dos resultados.")
-            
-             
+
+
     # --- Aba: Tecnologias ---
     with tab_tech:
         st.subheader("🛠️ Stack Tecnológico Utilizado")
@@ -201,16 +193,16 @@ def display_documentation():
                 controle e sem a necessidade de depender de APIs externas ou custos associados. Suporta uma crescente
                 biblioteca de modelos abertos. [Conheça o Ollama](https://ollama.com).
                 """)
-        
+
         st.subheader(" ", divider="rainbow")
         st.warning(
             """**Dependência Externa Essencial: FFmpeg**
-            
+
             ⚠️ O `ffmpeg` é uma suíte de software crucial para manipulação de multimídia. No contexto deste projeto,
             o Whisper depende do `ffmpeg` para decodificar e processar uma ampla variedade de formatos de arquivo de áudio
             antes da transcrição. Sua ausência ou configuração incorreta no sistema resultará em falhas na
             transcrição. As instruções detalhadas de instalação do `ffmpeg` podem ser encontradas na aba "Config. Ambiente".
-            """, 
+            """,
             icon="🚨"
         )
 
@@ -220,11 +212,10 @@ def display_documentation():
         st.markdown("Siga estes passos detalhados para preparar seu ambiente local e executar a aplicação. Uma configuração correta é essencial para que todas as funcionalidades operem como esperado.")
         st.subheader(" ", divider="rainbow")
 
-        # Primeiros 4 passos em duas colunas
         col_env1, col_env2 = st.columns(2)
 
         with col_env1:
-            with st.expander("Passo 1: Instalação do Python", expanded=False): # Manter o primeiro expandido
+            with st.expander("Passo 1: Instalação do Python", expanded=False):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>code</span> 1. Python", unsafe_allow_html=True)
                 st.info("➡️ Certifique-se de ter Python instalado. Versões **3.8 a 3.11** são recomendadas. Você pode baixar Python em [python.org](https://www.python.org/downloads/).", icon="🐍")
                 st.markdown("""
@@ -285,7 +276,7 @@ def display_documentation():
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>list_alt</span> 4. Instalação das Dependências Python", unsafe_allow_html=True)
                 st.markdown("""
                 As bibliotecas Python externas necessárias para o funcionamento do projeto estão listadas em um arquivo `requirements.txt`.
-                
+
                 1.  **<span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>description</span> Crie o arquivo `requirements.txt`** na raiz do seu projeto com o seguinte conteúdo:
                     ```text
                     - streamlit
@@ -302,16 +293,15 @@ def display_documentation():
                 - **<span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>http</span> Requests:** Biblioteca para realizar chamadas HTTP, usada  para comunicar com a API local do servidor Ollama.
                 """, unsafe_allow_html=True)
                 st.caption("Nota: A dependência `ffmpeg`, que é crucial para o Whisper, é uma instalação a nível de sistema e é tratada no próximo passo.")
-        
+
         st.subheader(" ", divider="rainbow")
 
         with st.expander("Passo 5: Instalação do FFmpeg (Dependência Crítica para Whisper)", expanded=False):
             st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>movie_filter</span> 5. FFmpeg", unsafe_allow_html=True)
             st.error("🛑 **FFmpeg é absolutamente essencial** para que a biblioteca Whisper possa processar arquivos de áudio corretamente. \n\nSem o FFmpeg instalado e devidamente configurado no PATH do seu sistema, a funcionalidade de transcrição provavelmente falhará ou não suportará todos os formatos de áudio.", icon="⚠️")
-            
+
             st.markdown("Instale o FFmpeg no seu sistema operacional:")
-            
-            # Instruções do FFmpeg em três colunas
+
             col_ffmpeg_linux, col_ffmpeg_mac, col_ffmpeg_win = st.columns(3)
 
             with col_ffmpeg_linux:
@@ -322,7 +312,7 @@ def display_documentation():
                 sudo apt update && sudo apt install ffmpeg
                 ```
                 """, unsafe_allow_html=True)
-            
+
             with col_ffmpeg_mac:
                 st.markdown("##### <span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>desktop_mac</span> macOS (Homebrew)", unsafe_allow_html=True)
                 st.markdown("""
@@ -340,7 +330,7 @@ def display_documentation():
                 3.  <span class='material-symbols-outlined' style='font-size:0.9em; vertical-align:middle;'>rule_folder</span> Adicione a pasta `bin` (ex: `C:\\ffmpeg\\bin`) ao PATH do sistema.
                 4.  <span class='material-symbols-outlined' style='font-size:0.9em; vertical-align:middle;'>restart_alt</span> **Reinicie** terminais abertos ou o sistema.
                 """, unsafe_allow_html=True)
-            
+
             st.subheader(" ", divider="rainbow")
             st.markdown("""
             **<span class='material-symbols-outlined' style='vertical-align:middle;'>task_alt</span> Verificando a Instalação do FFmpeg:**
@@ -360,16 +350,16 @@ def display_documentation():
         """)
         st.subheader(" ", divider="rainbow")
 
-        col_whisper, col_ollama = st.columns(2)
+        col_whisper, col_ollama_setup = st.columns(2) # Renomeado para evitar conflito
 
         with col_whisper:
             st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>hearing</span> 1. Modelos Whisper (Transcrição)", unsafe_allow_html=True)
-            
+
             with st.expander("Detalhes e Considerações sobre os Modelos Whisper", expanded=False):
                 st.markdown("""
                 Os modelos de transcrição do OpenAI Whisper são o coração da funcionalidade de conversão de áudio para texto.
                 Eles são gerenciados pela própria biblioteca `openai-whisper`.
-                
+
                 - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>file_download</span> Download Automático:** Ao selecionar um tamanho de modelo na interface do aplicativo (`tiny`, `base`, `small`, `medium`, `large`) pela primeira vez, o modelo correspondente será baixado automaticamente.
                 - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>wifi</span> Requisito de Internet:** É necessária uma conexão com a internet para este download inicial de cada modelo.
                 - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>folder_managed</span> Local de Cache:** Os modelos baixados são armazenados localmente para uso futuro, geralmente na pasta `~/.cache/whisper` (no diretório home do seu usuário, dentro da pasta `.cache`).
@@ -380,13 +370,13 @@ def display_documentation():
                 """, unsafe_allow_html=True)
                 st.caption("O aplicativo está configurado para priorizar transcrições em Português (`language='pt'`).")
 
-        with col_ollama:
+        with col_ollama_setup: # Usando o nome renomeado
             st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>hub</span> 2. Ollama e LLMs (Pontos-Chave)", unsafe_allow_html=True)
             st.markdown("""
             Ollama é a plataforma utilizada para executar Modelos de Linguagem Grandes (LLMs) localmente em sua máquina.
             Estes LLMs analisam o texto transcrito para extrair os pontos-chave. <span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>psychology</span>
             """, unsafe_allow_html=True)
-            
+
             with st.expander("Etapa 2.1: Instalação do Ollama", expanded=False):
                 st.markdown("##### <span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>system_update_alt</span> Guia de Instalação", unsafe_allow_html=True)
                 st.markdown("""
@@ -431,211 +421,290 @@ def display_documentation():
                   ollama list
                   ```
                 """, unsafe_allow_html=True)
-        
-        st.subheader(" ", divider="rainbow") 
+
+        st.subheader(" ", divider="rainbow")
         st.warning(
             """
             **Crítico: Ollama e Modelos LLM**
 
-            O servidor Ollama deve estar em execução, e o modelo LLM que você especificar na interface do aplicativo precisa ter sido previamente baixado com `ollama pull` e estar listado em `ollama list` para que a funcionalidade de extração de pontos-chave funcione corretamente. 
+            O servidor Ollama deve estar em execução, e o modelo LLM que você especificar na interface do aplicativo precisa ter sido previamente baixado com `ollama pull` e estar listado em `ollama list` para que a funcionalidade de extração de pontos-chave funcione corretamente.
             - :red[‼️ **Caso contrário, você encontrará erros de comunicação ou o campo de pontos-chave ficará vazio.**]
-            """, 
+            """,
             icon="🚨"
         )
 
     # --- Aba: Executando a Aplicação ---
-    with tab_running_app: #
-        st.subheader("🚀 Executando a Aplicação Streamlit") 
+    with tab_running_app:
+        st.subheader("🚀 Executando a Aplicação Streamlit")
         st.markdown("""
         Com todos os pré-requisitos e configurações do ambiente e dos modelos de IA concluídos (detalhados nas abas anteriores), você está pronto para iniciar o aplicativo.
-        """) 
-        st.subheader(" ", divider="rainbow")
-
-        col_checklist, col_steps = st.columns([0.8, 1.2]) # Ajuste a proporção se desejar
-
-        with col_checklist:
-            # Título corrigido usando st.markdown para renderizar o ícone HTML e adicionando o emoji ✅ manualmente
-            st.markdown("#### <span class='material-symbols-outlined'>checklist</span> Checklist Rápido Antes de Executar:", unsafe_allow_html=True)
-            
-            # A lista de marcadores abaixo já estava correta com unsafe_allow_html=True no seu st.markdown
-            st.markdown("""
-            - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>toggle_on</span> Ambiente virtual **ativado**?
-            - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>dns</span> Servidor Ollama **rodando**?
-            - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>download_done</span> Modelo LLM desejado **baixado** via Ollama (ver aba "Config. Modelos IA")?
-            - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>folder_zip</span> Você está no **diretório correto** do projeto no terminal?
-            - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>movie_filter</span> `ffmpeg` **instalado** e no PATH (ver aba "Config. Ambiente")?
-            """, unsafe_allow_html=True)
-            st.subheader(" ", divider="rainbow")
-            st.markdown("##### <span class='material-symbols-outlined'>system_update_alt</span> Download de Modelos Whisper", unsafe_allow_html=True)
-            st.caption("Lembre-se: os modelos Whisper são baixados automaticamente no primeiro uso. Uma conexão com a internet será necessária nesse momento.")
-            
-
-        with col_steps:
-            st.markdown(r"""
-            1.  **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>power_settings_new</span> Ative o Ambiente Virtual:**
-                Se você criou um (ex: `.venv`), certifique-se de que ele está ativo no seu terminal atual.
-                ```bash
-                # Exemplo para Linux/macOS:
-                source .venv/bin/activate
-                # Exemplo para Windows (PowerShell):
-                # .\.venv\Scripts\Activate.ps1 
-                ```
-                
-            2.  **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>fact_check</span> Verifique o Servidor Ollama:**
-                Confirme que o servidor Ollama está em execução (conforme detalhado na aba "Config. Modelos IA").
-            3.  **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>folder_open</span> Navegue até a Pasta do Projeto:**
-                No seu terminal, use o comando `cd` para ir até o diretório onde o arquivo `app.py` está localizado.
-                ```bash
-                cd caminho/para/seu/projeto
-                ```
-            4.  **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>terminal</span> Execute o Comando Streamlit:**
-                Digite o seguinte comando e pressione Enter:
-                ```bash
-                streamlit run app.py
-                ```
-                ou
-                ```bash
-                streamlit run app.py --server.fileWatcherType none
-                ```
-                 
-                
-                
-                Este comando inicia o servidor web do Streamlit e, na maioria das vezes, abre a aplicação automaticamente no seu navegador padrão.
-            """, unsafe_allow_html=True)
-        
-        st.subheader(" ", divider="rainbow")
-
-        st.success("🎉 **Aplicação Iniciada! O que esperar:** 🎉", icon="✅") 
-        st.markdown("""
-        - Seu navegador web padrão deverá abrir uma nova aba com a interface do aplicativo.
-        - Se não abrir automaticamente, o terminal (onde você executou `streamlit run app.py`) mostrará as URLs para acesso:
-            - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>computer</span> Local URL:** Geralmente `http://localhost:8501`
-            - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>wifi</span> Network URL:** Algo como `http://SEU_ENDERECO_IP_LOCAL:8501` (útil para acessar de outros dispositivos na mesma rede).
-        - <span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>hourglass_empty</span> **Primeiro Carregamento:** Aguarde alguns instantes para a interface carregar completamente. O primeiro uso de um modelo Whisper ou o carregamento inicial de um modelo Ollama podem levar um pouco mais de tempo.
-        """, unsafe_allow_html=True) 
-        st.subheader(" ", divider="rainbow")
-
-        st.markdown("#### <span class='material-symbols-outlined'>stop_circle</span> Parando a Aplicação", unsafe_allow_html=True)
-        st.markdown("""
-        Para interromper o servidor Streamlit e fechar a aplicação:
-        - Volte para a janela do terminal onde você executou o comando `streamlit run app.py`.
-        - Pressione as teclas `Ctrl` + `C`.
-        - O terminal pode pedir uma confirmação para encerrar o job; se sim, confirme (geralmente digitando `y` ou `s`).
         """)
         st.subheader(" ", divider="rainbow")
 
-        st.markdown("#### <span class='material-symbols-outlined'>tips_and_updates</span> Dicas Adicionais ao Executar", unsafe_allow_html=True)
-        st.markdown("""
-        - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>refresh</span> Recarregar Alterações no Código:** Se você editar os arquivos Python (`app.py`, `doc.py`, etc.) enquanto o Streamlit está rodando, a interface do Streamlit no navegador geralmente mostrará uma opção "Rerun" no canto superior direito, ou pode tentar recarregar automaticamente. Se preferir, salvar o arquivo modificado e atualizar a página do navegador (F5 ou Cmd+R) também funciona.
-        - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>important_devices</span> Acesso em Outros Dispositivos:** A "Network URL" exibida no terminal é útil se você quiser testar ou usar a aplicação em um tablet, smartphone ou outro computador que esteja conectado à mesma rede Wi-Fi/LAN.
-        - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>troubleshoot</span> Observando o Terminal:** Mantenha o terminal onde o Streamlit está rodando visível. Ele exibirá informações úteis, logs de acesso e, mais importante, mensagens de erro detalhadas caso algo não funcione como esperado na aplicação.
-        """, unsafe_allow_html=True)
+        col_checklist, col_steps_run = st.columns([0.8, 1.2]) # Renomeado col_steps para col_steps_run
+
+        with col_checklist:
+            with st.expander("📝 Checklist Rápido Antes de Executar", expanded=True):
+                st.markdown("#### <span class='material-symbols-outlined'>checklist</span> Itens Essenciais:", unsafe_allow_html=True)
+                st.markdown("""
+                - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>toggle_on</span> Ambiente virtual **ativado**?
+                - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>dns</span> Servidor Ollama **rodando**? (Veja detalhes abaixo)
+                - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>download_done</span> Modelo LLM desejado **baixado** via Ollama? (Veja detalhes abaixo e na aba "Config. Modelos IA")
+                - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>folder_zip</span> Você está no **diretório correto** do projeto no terminal?
+                - <span class='material-symbols-outlined' style='vertical-align:middle; font-size:1.1em;'>movie_filter</span> `ffmpeg` **instalado** e no PATH (ver aba "Config. Ambiente")?
+                """, unsafe_allow_html=True)
+
+            with st.expander("⚙️ Gerenciando e Verificando o Ollama", expanded=False):
+                st.markdown("##### <span class='material-symbols-outlined' style='vertical-align:middle;'>task_alt</span> Verificando se o Ollama está Rodando", unsafe_allow_html=True)
+                st.markdown("""
+                - Normalmente, o Ollama é executado como um serviço em segundo plano após a instalação.
+                - Para confirmar, tente listar os modelos:
+                  ```bash
+                  ollama list
+                  ```
+                - Se funcionar, o servidor está ativo.
+                - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>desktop_windows</span> Procure pelo ícone do Ollama na bandeja do sistema.
+                - <span class='material-symbols-outlined' style='font-size:1em; vertical-align:middle;'>lan</span> Porta padrão: `http://localhost:11434`.
+                """, unsafe_allow_html=True)
+
+                st.markdown("##### <span class='material-symbols-outlined' style='vertical-align:middle;'>format_list_bulleted</span> Listando Modelos Ollama Baixados", unsafe_allow_html=True)
+                st.markdown("""
+                - Para ver modelos disponíveis localmente:
+                  ```bash
+                  ollama list
+                  ```
+                - O nome listado (ex: `llama3`) é o que você usará na aplicação.
+                """, unsafe_allow_html=True)
+
+                st.markdown("##### <span class='material-symbols-outlined' style='vertical-align:middle;'>play_circle</span> Iniciando o Servidor Ollama Manualmente / Ver Logs", unsafe_allow_html=True)
+                st.markdown("""
+                - Se não estiver rodando ou para ver logs:
+                  ```bash
+                  ollama serve
+                  ```
+                - Se já estiver rodando como serviço, este comando dará erro de porta em uso.
+                - Para parar o servidor manual: `Ctrl + C` no terminal.
+                """, unsafe_allow_html=True)
+
+                st.markdown("##### <span class='material-symbols-outlined' style='vertical-align:middle;'>download</span> Baixando Novos Modelos LLM com Ollama", unsafe_allow_html=True)
+                st.markdown("""
+                - Modeos LLM devem ser baixados antes do uso:
+                  ```bash
+                  ollama pull llama3
+                  ollama pull mistral
+                  ollama pull qwen2:0.5b 
+                  ```
+                - Mais modelos na [biblioteca Ollama](https://ollama.com/library).
+                - Detalhes na aba "**🧠 Config. Modelos IA**".
+                """, unsafe_allow_html=True)
+
+                st.markdown("##### <span class='material-symbols-outlined' style='vertical-align:middle;'>rocket</span> Testando um Modelo Ollama Diretamente (Ex: Llama 3)", unsafe_allow_html=True)
+                st.markdown("""
+                - Após confirmar que o servidor Ollama está rodando e o modelo (`llama3`, por exemplo) está listado em `ollama list`, você pode testá-lo diretamente no terminal:
+                  ```bash
+                  ollama run llama3
+                  ```
+                - Isso iniciará uma sessão de chat interativa com o modelo no seu terminal.
+                - Você pode fazer perguntas ou dar instruções diretamente.
+                - Para sair da sessão de chat do Ollama no terminal, digite `Ctrl + D` ou `/bye` e pressione Enter.
+                - Este é um bom teste para verificar se um modelo específico está operacional.
+                """, unsafe_allow_html=True)
+
+
+            with st.expander("ℹ️ Download de Modelos Whisper", expanded=False):
+                st.markdown("##### <span class='material-symbols-outlined' style='vertical-align:middle;'>system_update_alt</span> Informações sobre Modelos Whisper", unsafe_allow_html=True)
+                st.caption("Lembre-se: os modelos Whisper são baixados automaticamente pelo aplicativo no primeiro uso de cada tamanho. Uma conexão com a internet será necessária nesse momento e o download pode levar alguns minutos dependendo do tamanho do modelo e da velocidade da sua conexão.")
+
+
+        with col_steps_run: # Usando o nome renomeado
+            with st.expander("🛠️ Passos Detalhados para Executar a Aplicação", expanded=True):
+                st.markdown(r"""
+                1.  **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>power_settings_new</span> Ative o Ambiente Virtual:**
+                    Se você criou um (ex: `.venv`), certifique-se de que ele está ativo no seu terminal atual.
+                    ```bash
+                    # Exemplo para Linux/macOS:
+                    source .venv/bin/activate
+                    # Exemplo para Windows (PowerShell):
+                    # .\.venv\Scripts\Activate.ps1
+                    ```
+
+                2.  **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>fact_check</span> Verifique o Servidor Ollama e Modelos:**
+                    Confirme que o servidor Ollama está em execução e que o modelo LLM desejado está baixado (veja o expander "⚙️ Gerenciando e Verificando o Ollama" ao lado ou a aba "Config. Modelos IA").
+                3.  **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>folder_open</span> Navegue até a Pasta do Projeto:**
+                    No seu terminal, use o comando `cd` para ir até o diretório onde o arquivo `app.py` está localizado.
+                    ```bash
+                    cd caminho/para/seu/projeto
+                    ```
+                4.  **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>terminal</span> Execute o Comando Streamlit:**
+                    Digite o seguinte comando e pressione Enter:
+                    ```bash
+                    streamlit run app.py
+                    ```
+                    ou, para potencialmente evitar problemas com o observador de arquivos:
+                    ```bash
+                    streamlit run app.py --server.fileWatcherType none
+                    ```
+                    Este comando inicia o servidor web do Streamlit.
+                """, unsafe_allow_html=True)
+
+        st.subheader(" ", divider="rainbow")
+
+        with st.expander("🎉 O Que Esperar Após Iniciar", expanded=True):
+            st.success("Aplicação Iniciada! O que esperar:", icon="✅")
+            st.markdown("""
+            - Seu navegador web padrão deverá abrir uma nova aba com a interface do aplicativo.
+            - Se não abrir automaticamente, o terminal (onde você executou `streamlit run app.py`) mostrará as URLs para acesso:
+                - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>computer</span> Local URL:** Geralmente `http://localhost:8501`
+                - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>wifi</span> Network URL:** Algo como `http://SEU_ENDERECO_IP_LOCAL:8501` (útil para acessar de outros dispositivos na mesma rede).
+            - <span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>hourglass_empty</span> **Primeiro Carregamento:** Aguarde alguns instantes para a interface carregar completamente. O primeiro uso de um modelo Whisper ou o carregamento inicial de um modelo Ollama podem levar um pouco mais de tempo.
+            """, unsafe_allow_html=True)
+
+        with st.expander("🛑 Como Parar a Aplicação", expanded=False):
+            st.markdown("#### <span class='material-symbols-outlined'>stop_circle</span> Parando a Aplicação Streamlit", unsafe_allow_html=True)
+            st.markdown("""
+            Para interromper o servidor Streamlit e fechar a aplicação:
+            - Volte para a janela do terminal onde você executou o comando `streamlit run app.py`.
+            - Pressione as teclas `Ctrl` + `C`.
+            - O terminal pode pedir uma confirmação para encerrar o job; se sim, confirme (geralmente digitando `y` ou `s`).
+            """, unsafe_allow_html=True)
+
+        with st.expander("💡 Dicas Adicionais ao Executar", expanded=False):
+            st.markdown("#### <span class='material-symbols-outlined'>tips_and_updates</span> Dicas Úteis", unsafe_allow_html=True)
+            st.markdown("""
+            - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>refresh</span> Recarregar Alterações no Código:** Se você editar os arquivos Python (`app.py`, `doc.py`, etc.) enquanto o Streamlit está rodando, a interface do Streamlit no navegador geralmente mostrará uma opção "Rerun" no canto superior direito, ou pode tentar recarregar automaticamente.
+            - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>important_devices</span> Acesso em Outros Dispositivos:** A "Network URL" exibida no terminal é útil se você quiser testar ou usar a aplicação em um tablet, smartphone ou outro computador que esteja conectado à mesma rede Wi-Fi/LAN.
+            - **<span class='material-symbols-outlined' style='font-size:1.1em; vertical-align:middle;'>troubleshoot</span> Observando o Terminal:** Mantenha o terminal onde o Streamlit está rodando visível. Ele exibirá informações úteis, logs de acesso e, mais importante, mensagens de erro detalhadas caso algo não funcione como esperado.
+            """, unsafe_allow_html=True)
+
 
     # --- Aba: Guia de Uso ---
     with tab_usage_guide:
-        st.subheader("🧭 Guia de Uso da Interface do Aplicativo") 
-        st.markdown("A interface foi projetada para ser intuitiva, este é um detalhamento das principais seções e funcionalidades:") 
+        st.subheader("🧭 Guia de Uso da Interface do Aplicativo")
+        st.markdown("A interface foi projetada para ser intuitiva, este é um detalhamento das principais seções e funcionalidades:")
+        st.subheader(" ", divider="rainbow")
 
         col_usage1, col_usage2 = st.columns(2)
 
         with col_usage1:
-            st.markdown("#### <span class='material-symbols-outlined'>view_sidebar</span> 1. Barra Lateral de Configurações (Sidebar)", unsafe_allow_html=True) 
-            with st.expander("Detalhes da Barra Lateral", expanded=False): 
+            with st.expander("Barra Lateral de Configurações (Sidebar)", expanded=True):
+                st.markdown("#### <span class='material-symbols-outlined'>view_sidebar</span> 1. Configurações Principais", unsafe_allow_html=True)
                 st.markdown("""
-                Localizada à esquerda da tela, a barra lateral contém todas as opções de configuração antes do processamento:
+                Localizada à esquerda da tela (sidebar), contém todas as opções de configuração antes do processamento:
                 - **<span class='material-symbols-outlined'>mic</span> Selecione o Modelo Whisper:**
                     - Um menu suspenso permite escolher o tamanho do modelo Whisper a ser usado para a transcrição (ex: `tiny`, `small`, `medium`).
-                    - **Impacto:** Modelos menores são mais rápidos mas menos precisos. Modelos maiores são mais precisos mas mais lentos e exigem mais recursos computacionais.
+                    - **Impacto:** Modelos menores são mais rápidos mas menos precisos. Modelos maiores são mais precisos mas mais lentos e exigem mais recursos.
                 - **<span class='material-symbols-outlined'>hub</span> Nome do Modelo Ollama:**
-                    - Um campo de texto onde você deve inserir o nome exato do modelo LLM que você baixou via Ollama e deseja usar para extrair os pontos-chave (ex: `llama3`, `mistral`, `qwen2:0.5b`).
+                    - Um campo de texto onde você deve inserir o nome exato do modelo LLM que você baixou via Ollama e deseja usar para extrair os pontos-chave (ex: `llama3`, `mistral`).
                     - Este nome deve corresponder a um modelo listado por `ollama list`.
                 - **<span class='material-symbols-outlined'>upload_file</span> Escolha um arquivo de áudio:**
                     - Botão para fazer upload de um arquivo de áudio do seu computador.
                     - **Formatos Suportados:** `.wav` e `.mp3`.
-                """, unsafe_allow_html=True) # Este já estava correto
+                """, unsafe_allow_html=True)
 
         with col_usage2:
-            st.markdown("#### <span class='material-symbols-outlined'>web_asset</span> 2. Área Principal de Interação", unsafe_allow_html=True) 
-            with st.expander("Detalhes da Área Principal (Após Upload e Processamento)", expanded=False): 
+            with st.expander("Área Principal de Interação e Resultados", expanded=True):
+                st.markdown("#### <span class='material-symbols-outlined'>web_asset</span> 2. Interação e Exibição", unsafe_allow_html=True)
                 st.markdown("""
                 - **<span class='material-symbols-outlined'>play_circle</span> Player de Áudio:**
-                    - Após o upload, um player de áudio aparecerá, permitindo que você ouça o áudio carregado antes ou depois do processamento.
+                    - Após o upload, um player de áudio aparecerá, permitindo que você ouça o áudio carregado.
                 - **<span class='material-symbols-outlined'>rocket_launch</span> Botão "Processar Áudio":**
-                    - Este é o gatilho principal (indicado pelo emoji 🚀 no botão real). Ao clicar nele, o processo de transcrição e extração de pontos-chave é iniciado.
-                - **<span class='material-symbols-outlined'>hourglass_top</span> Indicadores de Progresso (Spinners):**
-                    - Durante o processamento, spinners aparecerão indicando as etapas em execução.
-                    - Estes spinners incluem a funcionalidade `show_time=True`, exibindo o tempo decorrido.
-                - **<span class='material-symbols-outlined'>view_column</span> Resultados Exibidos em Colunas:**
+                    - Ao clicar nele, o processo de transcrição e extração de pontos-chave é iniciado.
+                - **<span class='material-symbols-outlined'>hourglass_top</span> Indicadores de Progresso:**
+                    - Durante o processamento, spinners indicarão as etapas em execução e o tempo decorrido.
+                - **<span class='material-symbols-outlined'>view_column</span> Resultados em Colunas:**
                     - **Coluna da Transcrição:** À esquerda, o texto completo transcrito.
                     - **Coluna de Pontos-Chave:** À direita, os pontos-chave identificados.
-                - **<span class='material-symbols-outlined'>notifications</span> Notificações (Toasts):**
-                    - Mensagens curtas e temporárias para indicar a conclusão de etapas.
-                """, unsafe_allow_html=True)  
-        
-        # Seção "Acesso à Documentação" abaixo das colunas, ocupando a largura total
-        st.subheader(" ", divider="rainbow") 
-        st.markdown("#### <span class='material-symbols-outlined'>menu_book</span> 3. Acesso à Documentação", unsafe_allow_html=True) 
-        st.markdown("""
-        - No topo da página principal ou da página de documentação, você encontrará o botão **"<span class='material-symbols-outlined'>visibility</span> Ver Documentação Interativa"** (ou similar, o texto do botão é definido em `app.py`).
-        - Clicar neste botão alterna a visualização entre a interface principal do aplicativo e esta página de documentação detalhada.
-        """, unsafe_allow_html=True)  
-        
-        
+                - **<span class='material-symbols-outlined'>notifications</span> Notificações:**
+                    - Mensagens curtas para indicar a conclusão de etapas.
+                """, unsafe_allow_html=True)
+
+        st.subheader(" ", divider="rainbow")
+        with st.expander("Acesso à Documentação Completa", expanded=False):
+            st.markdown("#### <span class='material-symbols-outlined'>menu_book</span> 3. Acesso à Documentação", unsafe_allow_html=True)
+            st.markdown("""
+            - No topo da página principal ou da página de documentação, você encontrará o botão **"<span class='material-symbols-outlined'>visibility</span> Ver Documentação Interativa"** (ou similar).
+            - Clicar neste botão alterna a visualização entre a interface principal do aplicativo e esta página de documentação detalhada que você está vendo.
+            """, unsafe_allow_html=True)
+
+
     # --- Aba: FAQ/Solução de Problemas ---
     with tab_faq:
-        st.subheader("❓ Perguntas Frequentes e Solução de Problemas") #
-        st.error("#### Encontrou um problema? Veja se estas dicas ajudam!", icon="🛠️") #
+        st.subheader("❓ Perguntas Frequentes e Solução de Problemas")
+        st.error("#### Encontrou um problema? Veja se estas dicas ajudam!", icon="🛠️")
+        st.subheader(" ", divider="rainbow")
 
         col_faq1, col_faq2 = st.columns(2)
 
         with col_faq1:
-            with st.expander("Problema: A aplicação não inicia ou mostra erro ao executar `streamlit run app.py`"): #
+            with st.expander("Problema: A aplicação não inicia ou mostra erro ao executar `streamlit run app.py`", expanded=False):
                 st.markdown("""
                 - **Verifique a instalação do Streamlit:** `pip show streamlit`.
                 - **Nome do arquivo:** Confirme que está no diretório correto e que o nome é `app.py`.
                 - **Ambiente Virtual:** Garanta que está ativado.
-                - **Conflitos de Porta:** Verifique as mensagens no terminal.
-                - **Logs do Terminal:** Observe para mensagens de erro detalhadas.
-                """) #
+                - **Conflitos de Porta:** Verifique as mensagens no terminal. (Ex: `Port 8501 is already in use`).
+                - **Logs do Terminal:** Observe atentamente para mensagens de erro detalhadas que indiquem o problema.
+                """)
 
-            with st.expander("Problema: Transcrição com Whisper está muito lenta"): #
+            with st.expander("Problema: Transcrição com Whisper está muito lenta", expanded=False):
                 st.markdown("""
-                - **Modelo Grande:** Modelos maiores são inerentemente mais lentos.
-                - **Recursos da Máquina:** Máquinas com poucos recursos serão mais lentas.
-                - **Primeira Execução:** Download do modelo adiciona tempo.
-                - **Solução:** Tente um modelo Whisper menor.
-                """) #
-            
-            with st.expander("Problema: Ollama não responde, erro de comunicação, ou nenhum ponto-chave é extraído"): #
+                - **Modelo Grande Selecionado:** Modelos Whisper maiores (`medium`, `large`) são inerentemente mais lentos, especialmente em CPUs.
+                - **Recursos da Máquina:** Máquinas com CPU mais antiga, pouca RAM ou sem GPU dedicada (para modelos maiores) terão desempenho inferior.
+                - **Primeira Execução de um Modelo:** O download e carregamento inicial do modelo podem adicionar tempo.
+                - **Soluções:**
+                    - Tente um modelo Whisper menor (ex: `base`, `small`) na barra lateral.
+                    - Certifique-se de que não há outros processos pesados consumindo recursos da sua máquina.
+                    - Se tiver GPU NVIDIA, verifique se o PyTorch está configurado para usá-la (geralmente automático se instalado corretamente).
+                """)
+
+            with st.expander("Problema: Ollama não responde, erro de comunicação, ou nenhum ponto-chave é extraído", expanded=False):
                 st.markdown("""
-                - **Servidor Ollama Inativo:** Verifique com `ollama list`. Tente `ollama serve`.
-                - **Modelo LLM não Baixado:** Use `ollama pull NOME_DO_MODELO`.
-                - **Nome do Modelo Incorreto:** Certifique-se de que o nome na interface é exato.
-                - **URL/Porta do Ollama:** Padrão é `http://localhost:11434`.
-                - **Recursos Insuficientes para o LLM:** Verifique os logs do `ollama serve`.
-                """) #
+                - **Servidor Ollama Inativo:**
+                    - Verifique se o servidor Ollama está rodando (veja aba "Executando o App" -> "Gerenciando e Verificando o Ollama").
+                    - Tente executar `ollama list` no terminal. Se der erro, o servidor não está acessível.
+                    - Se necessário, inicie-o com `ollama serve` (se não estiver configurado para iniciar automaticamente).
+                - **Modelo LLM não Baixado:**
+                    - Certifique-se de que o nome do modelo LLM inserido na interface da aplicação (ex: `llama3`) foi previamente baixado. Use `ollama pull NOME_DO_MODELO` no terminal.
+                - **Nome do Modelo Incorreto na Interface:** O nome deve ser exato como aparece em `ollama list`.
+                - **URL/Porta do Ollama:** O padrão é `http://localhost:11434`. Se você configurou o Ollama para uma porta diferente e a aplicação não foi ajustada, haverá falha.
+                - **Recursos Insuficientes para o LLM:** Modelos LLM, mesmo rodando localmente, podem exigir bastante RAM. Se sua máquina tiver pouca RAM, o modelo pode não carregar ou responder. Verifique os logs do `ollama serve` para mensagens de erro (`out of memory`, etc.).
+                - **Firewall:** Verifique se o firewall não está bloqueando a comunicação local na porta 11434.
+                """)
 
         with col_faq2:
-            with st.expander("Problema: FFmpeg não encontrado / Erro na transcrição relacionado a formato de áudio"): #
+            with st.expander("Problema: FFmpeg não encontrado / Erro na transcrição relacionado a formato de áudio", expanded=False):
                 st.markdown("""
-                - **Causa Principal:** FFmpeg não instalado ou não está no PATH.
-                - **Solução:** Siga as instruções de instalação na aba "Config. Ambiente". Reinicie o terminal/PC. Verifique com `ffmpeg -version`.
-                """) #
+                - **Causa Principal:** FFmpeg não está instalado ou o diretório `bin` do FFmpeg não está configurado na variável de ambiente PATH do seu sistema.
+                - **Solução:**
+                    1. Siga rigorosamente as instruções de instalação do FFmpeg para o seu sistema operacional, detalhadas na aba "**🖥️ Config. Ambiente**".
+                    2. Após a instalação e configuração do PATH, **reinicie** todos os terminais abertos ou, para garantir, reinicie o computador.
+                    3. Verifique a instalação abrindo um **novo** terminal e digitando `ffmpeg -version`. Você deve ver informações da versão, não um erro.
+                """)
 
-            with st.expander("Problema: Erro ao carregar modelo Whisper / Download falha"): #
+            with st.expander("Problema: Erro ao carregar modelo Whisper / Download do modelo Whisper falha", expanded=False):
                 st.markdown("""
-                - **Conexão com a Internet:** Necessária para o download inicial.
-                - **Espaço em Disco:** Verifique `~/.cache/whisper`.
-                - **Firewall/Proxy:** Podem estar bloqueando o download.
-                - **Cache Corrompido:** Tente limpar `~/.cache/whisper`.
-                """) #
-            
-            with st.expander("Problema: Qualidade da transcrição não é ideal ou o idioma está incorreto"): #
+                - **Conexão com a Internet:** É necessária uma conexão estável com a internet para o download automático do modelo Whisper na primeira vez que ele é usado.
+                - **Espaço em Disco Insuficiente:** Os modelos Whisper são salvos em `~/.cache/whisper`. Verifique se há espaço suficiente no disco onde seu diretório home está localizado.
+                - **Firewall ou Proxy:** Configurações de firewall ou proxy na sua rede podem estar bloqueando o download dos arquivos do modelo.
+                - **Cache Corrompido:** Em casos raros, o cache pode estar corrompido. Você pode tentar limpar (ou renomear) a pasta `~/.cache/whisper` e deixar o aplicativo tentar baixar o modelo novamente.
+                """)
+
+            with st.expander("Problema: Qualidade da transcrição não é ideal ou o idioma está incorreto", expanded=False):
                 st.markdown("""
-                - **Qualidade do Áudio:** Ruído, volume baixo, múltiplos falantes afetam a precisão.
-                - **Tamanho do Modelo Whisper:** Modelos menores são menos precisos.
-                - **Idioma:** App configurado para **language='pt'**. Outros idiomas podem não funcionar bem.
-                """) #
+                - **Qualidade do Áudio Original:** Ruído de fundo excessivo, volume muito baixo, falantes distantes do microfone, ou múltiplos falantes sobrepostos podem degradar significativamente a precisão da transcrição.
+                - **Tamanho do Modelo Whisper:** Modelos Whisper menores (ex: `tiny`, `base`) são mais rápidos, mas geralmente menos precisos que os maiores (`medium`, `large`). Considere usar um modelo maior se a precisão for crítica e seus recursos permitirem.
+                - **Configuração de Idioma:** Este aplicativo está configurado para priorizar o Português (`language='pt'`) para o Whisper. Se o áudio estiver em outro idioma, a transcrição pode não ser ideal ou pode tentar transcrever como se fosse Português. Para outros idiomas, o código precisaria ser ajustado.
+                """)
 
-        st.info("ℹ️ **Dica Geral:** Sempre verifique os logs (mensagens de texto) no terminal onde você executou `streamlit run app.py` e, se aplicável, no terminal onde `ollama serve` está rodando. Eles frequentemente contêm mensagens de erro detalhadas que podem ajudar a diagnosticar o problema.", icon="🔍") #
+        st.subheader(" ", divider="rainbow")
+        st.info("ℹ️ **Dica Geral para Solução de Problemas:** Sempre verifique as mensagens de texto (logs) no terminal onde você executou `streamlit run app.py`. Se estiver usando `ollama serve` em um terminal separado, monitore esse terminal também. Esses logs frequentemente contêm mensagens de erro detalhadas que são cruciais para diagnosticar a causa raiz de um problema.", icon="🔍")
 
+# Para testar este arquivo de documentação isoladamente, descomente as linhas abaixo:
+# if __name__ == "__main__":
+#     # Configuração básica da página para teste
+#     st.set_page_config(
+#         page_title="Documentação do Projeto de Transcrição",
+#         page_icon="🎙️",
+#         layout="wide",
+#         initial_sidebar_state="expanded"
+#     )
+#     display_documentation()

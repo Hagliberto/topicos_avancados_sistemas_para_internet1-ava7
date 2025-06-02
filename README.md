@@ -123,6 +123,10 @@ Com tudo pronto:
     ```bash
     streamlit run app.py
     ```
+    ou
+    ```bash
+    streamlit run app.py --servfileWatcherType none
+    ```
 3.  **Acesse a Interface:** O Streamlit deve abrir a aplicação no seu navegador. Se não, acesse o endereço fornecido no terminal (geralmente `http://localhost:8501`).
 
 ---

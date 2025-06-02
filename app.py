@@ -50,7 +50,7 @@ def load_whisper_model(model_name=DEFAULT_WHISPER_MODEL):
         st.info("Certifique-se de que os arquivos do modelo Whisper estão disponíveis ou tente um tamanho de modelo diferente.")
         return None
 
-@st.cache_data(show_spinner=True)
+@st.cache_data(show_spinner=False)
 def transcribe_audio_cached(whisper_model_name_for_cache, audio_bytes, original_filename="audio.wav"):
     """
     Transcreve os audio_bytes usando o modelo Whisper especificado (nome).

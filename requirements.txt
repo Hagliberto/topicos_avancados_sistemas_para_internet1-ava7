@@ -1,0 +1,77 @@
+# ===================================================================
+# Bibliotecas de Visualização
+# ===================================================================
+altair==5.5.0                  # Visualização de dados declarativa
+pydeck==0.9.1                  # Visualização de mapas
+streamlit==1.45.1              # Aplicativos web de dados
+
+# ===================================================================
+# Bibliotecas de Manipulação de Dados
+# ===================================================================
+pandas==2.2.3                  # Manipulação de dados
+numpy==2.2.6                   # Computação científica
+pillow==11.2.1                 # Manipulação de imagens
+pyarrow==20.0.0                # Manipulação de dados em coluna
+
+# ===================================================================
+# Bibliotecas de Aritmética e Matemática
+# ===================================================================
+mpmath==1.3.0                  # Aritmética de precisão arbitrária
+sympy==1.14.0                  # Matemática simbólica
+numba==0.61.2                  # Compilador JIT para Python
+
+# ===================================================================
+# Bibliotecas de Rede e Comunicação
+# ===================================================================
+requests==2.32.3               # Requisições HTTP
+urllib3==2.4.0                 # Requisições HTTP
+tornado==6.5.1                 # Framework assíncrono para web
+
+# ===================================================================
+# Bibliotecas de Análise e Processamento de Dados
+# ===================================================================
+jsonschema==4.24.0             # Validação de JSON
+jsonschema-specifications==2025.4.1  # Especificações de validação JSON
+attrs==25.3.0                  # Classes com atributos
+more-itertools==10.7.0         # Extensões para itertools
+
+# ===================================================================
+# Bibliotecas de Desenvolvimento e Ferramentas
+# ===================================================================
+setuptools==80.9.0             # Ferramentas de empacotamento
+click==8.2.1                   # Interfaces de linha de comando
+colorama==0.4.6                # Cores no terminal
+filelock==3.18.0               # Bloqueio de arquivos
+fsspec==2025.5.1               # Interface para sistemas de arquivos
+
+# ===================================================================
+# Bibliotecas para Git
+# ===================================================================
+gitdb==4.0.12                  # Banco de dados Git
+GitPython==3.1.44              # Interface Git para Python
+smmap==5.0.2                   # Gerenciamento de memória em repositórios Git
+
+# ===================================================================
+# Bibliotecas de Tokenização e Linguagem Natural
+# ===================================================================
+openai-whisper==20240930       # Transcrição de áudio
+tiktoken==0.9.0                # Tokenização para modelos de linguagem
+
+# ===================================================================
+# Bibliotecas de Compatibilidade e Utilitários
+# ===================================================================
+certifi==2025.4.26             # Certificados CA para SSL
+charset-normalizer==3.4.2      # Normalização de strings
+idna==3.10                     # Nomes de domínio internacionalizados
+regex==2024.11.6               # Expressões regulares
+six==1.17.0                    # Compatibilidade Python 2 e 3
+typing_extensions==4.13.2      # Extensões para tipos do Python
+tenacity==9.1.2                # Retentativas de chamadas de função
+tzdata==2025.2                 # Dados de fuso horário
+
+# ===================================================================
+# Bibliotecas de Desempenho
+# ===================================================================
+cachetools==5.5.2              # Ferramentas de cache
+llvmlite==0.44.0               # Interface leve para LLVM
+protobuf==6.31.1               # Serialização de dados

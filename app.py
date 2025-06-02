@@ -34,7 +34,7 @@ DEFAULT_WHISPER_MODEL = "small" # "tiny", "base", "small", "medium", "large"
 
 # --- Helper Functions ---
 
-@st.cache_resource(show_spinner=False) # Cache o modelo Whisper para eficiência - Spinner do cache desabilitado
+@st.cache_resource(show_spinner=True)
 def load_whisper_model(model_name=DEFAULT_WHISPER_MODEL):
     """Carrega o modelo Whisper especificado."""
     try:
@@ -45,7 +45,7 @@ def load_whisper_model(model_name=DEFAULT_WHISPER_MODEL):
         st.info("Certifique-se de que os arquivos do modelo Whisper estão disponíveis ou tente um tamanho de modelo diferente.")
         return None
 
-@st.cache_data(show_spinner=False) # Cache the transcription result - Spinner do cache desabilitado
+@st.cache_data(show_spinner=True)
 def transcribe_audio_cached(whisper_model_name_for_cache, audio_bytes, original_filename="audio.wav"):
     """
     Transcreve os audio_bytes usando o modelo Whisper especificado (nome).
@@ -67,13 +67,13 @@ def transcribe_audio_cached(whisper_model_name_for_cache, audio_bytes, original_
     try:
         result = model.transcribe(temp_audio_path, fp16=False, language='pt') 
         return result["text"]
-    except Exception: # pylint: disable=broad-except
+    except Exception:
         return "ERRO_TRANSCRICAO"
     finally:
         if os.path.exists(temp_audio_path):
             os.remove(temp_audio_path)
 
-@st.cache_data(show_spinner=False) # Cache the key points extraction - Spinner do cache desabilitado
+@st.cache_data(show_spinner=False)
 def get_key_points_from_ollama_cached(text_to_summarize, ollama_model_name):
     """
     Envia o texto para o Ollama para extrair pontos-chave.
@@ -103,7 +103,7 @@ def get_key_points_from_ollama_cached(text_to_summarize, ollama_model_name):
         return data.get("response", "Nenhum ponto-chave extraído pelo Ollama.")
     except requests.exceptions.RequestException:
         return "ERRO_OLLAMA_COMUNICACAO"
-    except Exception: # pylint: disable=broad-except
+    except Exception:
         return "ERRO_OLLAMA_INESPERADO"
 
 # --- Lógica de exibição da Documentação ou App Principal ---
@@ -111,8 +111,7 @@ def get_key_points_from_ollama_cached(text_to_summarize, ollama_model_name):
 show_readme = st.toggle("📖 Ver Documentação Interativa", help="Clique para ver a documentação detalhada do projeto.")
 
 if show_readme:
-    # Não é mais necessário o spinner aqui, pois a função display_documentation não carrega arquivos externos.
-    display_documentation() # Chama a função de documentação do doc.py
+    display_documentation()
 else:
     # --- Main Application Interface ---
     st.markdown(
@@ -166,14 +165,13 @@ else:
             process_button_clicked = st.button("🚀 Processar Áudio", type="primary", use_container_width=True, key="process_audio_main")
 
         if process_button_clicked:
-            # Spinner principal com show_time=True
+            
             with st.spinner(f":blue[**Processando**] :gray[{uploaded_file.name}...] :orange[**Isso pode levar alguns minutos (ou carregar da cache).**]", show_time=True):
                 
                 transcription_status_placeholder = st.empty()
                 transcription_status_placeholder.info(f"Iniciando transcrição com Whisper ({whisper_model_name})...")
                 
                 transcribed_text_result = None
-                # Envolve a chamada a transcribe_audio_cached com um spinner dedicado
                 with st.spinner(f"Transcrevendo áudio com Whisper ({whisper_model_name})...", show_time=True):
                     transcribed_text_result = transcribe_audio_cached(whisper_model_name, audio_bytes, uploaded_file.name)
                 
@@ -205,7 +203,6 @@ else:
                         key_points_status_placeholder.info(f"Extraindo pontos-chave com Ollama ({ollama_model_name})...")
                         
                         key_points_result = None
-                        # Envolve a chamada a get_key_points_from_ollama_cached com um spinner dedicado
                         with st.spinner(f"Gerando pontos-chave com Ollama ({ollama_model_name})...", show_time=True):
                             key_points_result = get_key_points_from_ollama_cached(transcribed_text_for_ollama, ollama_model_name)
                         

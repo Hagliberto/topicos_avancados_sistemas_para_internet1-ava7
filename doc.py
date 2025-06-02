@@ -153,7 +153,7 @@ def display_documentation():
 
         col_tech1, col_tech2 = st.columns(2)
         with col_tech1:
-            with st.expander("Python (Linguagem Principal)", expanded=True):
+            with st.expander("Python (Linguagem Principal)", expanded=False):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>code</span> Python", unsafe_allow_html=True)
                 st.markdown("""
                 Linguagem de programação versátil, poderosa e de alto nível, amplamente adotada em desenvolvimento web,
@@ -162,7 +162,7 @@ def display_documentation():
                 Neste projeto, Python é a espinha dorsal que interconecta todos os componentes.
                 """)
 
-            with st.expander("OpenAI Whisper (Transcrição de Áudio)", expanded=True):
+            with st.expander("OpenAI Whisper (Transcrição de Áudio)", expanded=False):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>mic_external_on</span> OpenAI Whisper", unsafe_allow_html=True)
                 st.markdown("""
                 Um modelo de Reconhecimento Automático de Fala (ASR) de última geração, desenvolvido e treinado pela OpenAI.
@@ -172,7 +172,7 @@ def display_documentation():
                 [Saiba mais sobre Whisper](https://openai.com/research/whisper).
                 """)
 
-            with st.expander("Requests (Comunicação HTTP)", expanded=True):
+            with st.expander("Requests (Comunicação HTTP)", expanded=False):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>http</span> Requests", unsafe_allow_html=True)
                 st.markdown("""
                 Uma biblioteca Python elegante e simples para fazer requisições HTTP. Considerada o padrão de fato para
@@ -182,7 +182,7 @@ def display_documentation():
                 """)
 
         with col_tech2:
-            with st.expander("Streamlit (Interface Web)", expanded=True):
+            with st.expander("Streamlit (Interface Web)", expanded=False):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>dashboard_customize</span> Streamlit", unsafe_allow_html=True)
                 st.markdown("""
                 Um framework open-source em Python que permite transformar scripts de análise de dados e modelos de IA
@@ -192,7 +192,7 @@ def display_documentation():
                 [Visite Streamlit](https://streamlit.io).
                 """)
 
-            with st.expander("Ollama (LLMs Locais)", expanded=True):
+            with st.expander("Ollama (LLMs Locais)", expanded=False):
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>hub</span> Ollama", unsafe_allow_html=True)
                 st.markdown("""
                 Uma plataforma poderosa que simplifica drasticamente o processo de download, configuração e execução
@@ -224,7 +224,7 @@ def display_documentation():
         col_env1, col_env2 = st.columns(2)
 
         with col_env1:
-            with st.expander("Passo 1: Instalação do Python", expanded=True): # Manter o primeiro expandido
+            with st.expander("Passo 1: Instalação do Python", expanded=False): # Manter o primeiro expandido
                 st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>code</span> 1. Python", unsafe_allow_html=True)
                 st.info("➡️ Certifique-se de ter Python instalado. Versões **3.8 a 3.11** são recomendadas. Você pode baixar Python em [python.org](https://www.python.org/downloads/).", icon="🐍")
                 st.markdown("""
@@ -365,7 +365,7 @@ requests
         with col_whisper:
             st.markdown("#### <span class='material-symbols-outlined' style='vertical-align:middle;'>hearing</span> 1. Modelos Whisper (Transcrição)", unsafe_allow_html=True)
             
-            with st.expander("Detalhes e Considerações sobre os Modelos Whisper", expanded=True):
+            with st.expander("Detalhes e Considerações sobre os Modelos Whisper", expanded=False):
                 st.markdown("""
                 Os modelos de transcrição do OpenAI Whisper são o coração da funcionalidade de conversão de áudio para texto.
                 Eles são gerenciados pela própria biblioteca `openai-whisper`.
@@ -542,7 +542,7 @@ requests
 
         with col_usage1:
             st.markdown("#### <span class='material-symbols-outlined'>view_sidebar</span> 1. Barra Lateral de Configurações (Sidebar)", unsafe_allow_html=True) 
-            with st.expander("Detalhes da Barra Lateral", expanded=True): 
+            with st.expander("Detalhes da Barra Lateral", expanded=False): 
                 st.markdown("""
                 Localizada à esquerda da tela, a barra lateral contém todas as opções de configuração antes do processamento:
                 - **<span class='material-symbols-outlined'>mic</span> Selecione o Modelo Whisper:**
@@ -558,7 +558,7 @@ requests
 
         with col_usage2:
             st.markdown("#### <span class='material-symbols-outlined'>web_asset</span> 2. Área Principal de Interação", unsafe_allow_html=True) 
-            with st.expander("Detalhes da Área Principal (Após Upload e Processamento)", expanded=True): 
+            with st.expander("Detalhes da Área Principal (Após Upload e Processamento)", expanded=False): 
                 st.markdown("""
                 - **<span class='material-symbols-outlined'>play_circle</span> Player de Áudio:**
                     - Após o upload, um player de áudio aparecerá, permitindo que você ouça o áudio carregado antes ou depois do processamento.

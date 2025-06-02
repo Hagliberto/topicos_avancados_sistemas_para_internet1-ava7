@@ -10,7 +10,12 @@ from doc import display_documentation # Importa a nova função de documentaçã
 
 # --- Streamlit App UI ---
 # THIS MUST BE THE FIRST STREAMLIT COMMAND
-st.set_page_config(page_title="Transcrição & Pontos-Chave", layout="wide")
+st.set_page_config(
+    page_title="Transcrição & Pontos-Chave", 
+    layout="wide",
+    initial_sidebar_state="expanded",
+    page_icon="🎙️",
+    )
 
 # --- Google Material Icons Stylesheet ---
 st.markdown("""

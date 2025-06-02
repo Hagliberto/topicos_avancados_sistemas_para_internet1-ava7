@@ -534,7 +534,7 @@ requests
     # --- Aba: Guia de Uso ---
     with tab_usage_guide:
         st.subheader("🧭 Guia de Uso da Interface do Aplicativo") 
-        st.markdown("A interface foi projetada para ser intuitiva.  está um detalhamento das principais seções e funcionalidades:") 
+        st.markdown("A interface foi projetada para ser intuitiva, este é um detalhamento das principais seções e funcionalidades:") 
 
         col_usage1, col_usage2 = st.columns(2)
 

@@ -119,7 +119,7 @@ else:
         """# 🎙️ <span class="material-symbols-outlined">graphic_eq</span> <span class="text-blue">**Transcrição de Áudio com Whisper**</span> & <span class="material-symbols-outlined">psychology</span> <span class="text-green">**Extração de Pontos-Chave com Ollama**</span>""",
         unsafe_allow_html=True
     )
-    st.caption("Faça o upload de um arquivo de áudio (.wav ou .mp3), e este aplicativo irá transcrevê-lo e extrair os pontos-chave.") 
+    st.caption("Faça o upload de um arquivo de áudio (.wav, .mp3 ou .ogg), e este aplicativo irá transcrevê-lo e extrair os pontos-chave.") 
     st.subheader(" ", divider="rainbow")
 
     st.sidebar.info("## Avaliação Online 7", icon="🎵") 

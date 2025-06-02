@@ -4,9 +4,9 @@
 
 ## 📖 Visão Geral Detalhada do Projeto
 
-Bem-vindo! Este projeto é uma solução robusta e intuitiva, nascida na disciplina de **Tópicos Avançados em Sistemas para Internet I** do curso de **Tecnologia em Sistemas para Internet**. Nossa missão? Transformar áudio bruto em texto preciso e, em seguida, extrair os **pontos-chave** mais importantes de forma automatizada. 🎯
+Bem-vindo! Este projeto é uma solução robusta e intuitiva, nascida na disciplina de **Tópicos Avançados em Sistemas para Internet I** do curso de **Tecnologia em Sistemas para Internet**. Minha missão? Transformar áudio bruto em texto preciso e, em seguida, extrair os **pontos-chave** mais importantes de forma automatizada. 🎯
 
-Queremos oferecer uma ferramenta **open-source** que demonstre o poder da **Inteligência Artificial (IA)** no processamento de linguagem natural e áudio. Tudo isso através de uma interface web interativa (criada com Streamlit ✨) que roda **localmente** na sua máquina, garantindo **privacidade total** e controle sobre seus dados. 🔒
+Quero oferecer uma ferramenta **open-source** que demonstre o poder da **Inteligência Artificial (IA)** no processamento de linguagem natural e áudio. Tudo isso através de uma interface web interativa (criada com Streamlit ✨) que roda **localmente** na sua máquina, garantindo **privacidade total** e controle sobre seus dados. 🔒
 
 ### 🎯 Propósito e Objetivos
 
@@ -38,7 +38,7 @@ Usar esta ferramenta traz muitas vantagens:
 
 Combinamos várias capacidades para uma experiência completa:
 
-*   **🎙️ Transcrição Precisa:** Faça upload fácil de arquivos `.wav` e `.mp3`. Usamos o poderoso **OpenAI Whisper** para alta acurácia, otimizado para Português (`pt`).
+*   **🎙️ Transcrição Precisa:** Faça upload fácil de arquivos `.wav`, `.ogg` e `.mp3`. Usamos o poderoso **OpenAI Whisper** para alta acurácia, otimizado para Português (`pt`).
 *   **🧠 Extração Inteligente de Pontos-Chave:** O texto transcrito é analisado por um **LLM via Ollama** para identificar e apresentar os tópicos principais de forma concisa. Você escolhe o modelo Ollama local (`llama3`, `mistral`, etc.).
 *   **🔧 Configuração Flexível:** Selecione o tamanho do modelo **Whisper** (`tiny` a `large`) para balancear velocidade e precisão. Especifique qual **modelo Ollama** usar.
 *   **👀 Interface Clara e Feedback:** Interaja através de uma interface **Streamlit** amigável. Veja indicadores de progresso (spinners ⏳), ouça o áudio carregado (▶️) e receba notificações ( Tostas 🍞) ao concluir.
@@ -53,7 +53,8 @@ Entenda como tudo funciona:
 2.  **🔊 Motor de Transcrição (Whisper Local):** Converte fala em texto na sua máquina.
 3.  **📝 Motor de Pontos-Chave (Ollama + LLM Local):** Processa o texto para extrair insights.
 
-**Fluxo:** Usuário ➡️ Interface ➡️ Whisper ➡️ Interface ➡️ Ollama ➡️ Interface ➡️ Usuário
+**Fluxo de Dados da Aplicação:**
+![Diagrama de Fluxo](assets/fluxo.png)
 
 ---
 
@@ -133,7 +134,7 @@ Com tudo pronto:
 1.  **Configure (Barra Lateral):**
     *   Escolha o **Modelo Whisper** (tamanho).
     *   Digite o **Nome do Modelo Ollama** que você baixou.
-2.  **Faça Upload do Áudio:** Clique em "Browse files" ou arraste e solte um arquivo `.wav` ou `.mp3`.
+2.  **Faça Upload do Áudio:** Clique em "Browse files" ou arraste e solte um arquivo `.wav`, `.ogg` ou `.mp3`.
 3.  **Processe:** Clique no botão "Processar Áudio".
 4.  **Aguarde e Veja os Resultados:** Acompanhe o progresso. A transcrição e os pontos-chave aparecerão na tela!
 
